@@ -53,12 +53,7 @@ public class GC_Sudoku : MonoBehaviour {
 
     // Update is called once per frame
     void Update(){
-        if (boardSizeLimit) {
-            //Flash text red
-            boardSizeLimit = false;
-        }else if (difficultyLimit) {
-            difficultyLimit = false;
-        }
+
     }
 
     /*
@@ -181,55 +176,6 @@ public class GC_Sudoku : MonoBehaviour {
                 }
             }
         }
-    }
-
-    
-    /*
-     * EVENT HANDLERS
-     */
-    
-    public void SizeSelect(int inc) {
-        int num0, num1;
-
-        boardSize += inc;
-        if (boardSize > maxBoardSize) {
-            boardSize = maxBoardSize;
-            boardSizeLimit = true;
-        } else if (boardSize < minBoardSize) {
-            boardSize = minBoardSize;
-            boardSizeLimit = true;
-        }
-        
-        num0 = boardSize.ToString()[0]-48;
-        sizeDigit0Img.sprite = numbersSheet[num0];
-
-        num1 = boardSize > 9 ? boardSize.ToString()[1]-48 : 0;
-
-        sizeDigit1Img.sprite = numbersSheet[num1];
-        sizeDigit1Img.enabled = boardSize > 9;
-    }
-
-    public void DifficultySelect(int inc) {
-        difficulty += inc;
-        if (difficulty > maxDifficulty) {
-            difficulty = maxDifficulty;
-            difficultyLimit = true;
-        } else if (difficulty < minDifficulty) {
-            difficulty = minDifficulty;
-            difficultyLimit = true;
-        }
-
-        int index = difficulty.ToString()[0] - 48;
-        if(numbersSheet.Length >= index)
-            difficultyImg.sprite = numbersSheet[index];
-
-    }
-
-    public void StartGame() {
-        boardComplete = new int[boardSize, boardSize];
-        boardComplete = GenerateRandomBoard(boardComplete);
-        boardComplete = SortBoard(boardComplete);
-        RenderBoard();
     }
 
 

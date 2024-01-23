@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GM : MonoBehaviour { 
+public class GM : MonoBehaviour {
 
     string currScene = "MainMenu";
     public GameObject loadingCanvas, loadingSpinner, titleCanvas;
@@ -14,6 +14,10 @@ public class GM : MonoBehaviour {
     Material[] skyboxes;
 
     UIController uic;
+
+    private void Awake(){
+        
+    }
 
     // Start is called before the first frame update
     void Start(){
@@ -31,6 +35,12 @@ public class GM : MonoBehaviour {
     /*TODO:
      * More robust async actions
      */
+    public void LoadSelectedMode() {
+        //TODO
+        //Make sure we have game prefs first
+        LoadSceneAdd(GamePrefs.GameModeName);
+    }
+
     public void LoadSceneAdd(string sceneName) {
         StartCoroutine(StartLoadScene(sceneName, true));
     }
